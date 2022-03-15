@@ -13,6 +13,8 @@ class ClimbResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :comments
+
   has_many   :first_ascents
 
   belongs_to :mountain
