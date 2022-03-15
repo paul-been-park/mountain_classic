@@ -7,6 +7,8 @@ class FirstAscentResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :climb
+
   # Indirect associations
 
 end
