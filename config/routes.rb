@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :climbs
   resources :mountains
   resources :regions
   devise_for :users
