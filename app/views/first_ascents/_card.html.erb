@@ -7,12 +7,20 @@
     <dl class="mb-1">
       <dt>Legend</dt>
       <!-- Display legend_id start -->
-      <dd><%= first_ascent.legend_id %></dd>
+      <dd>
+        <% if @first_ascent.legend.present? %>
+          <%= link_to first_ascent.legend, first_ascent.legend %>
+        <% end %>
+      </dd>
       <!-- Display legend_id end -->
 
       <dt>Climb</dt>
       <!-- Display climb_id start -->
-      <dd><%= first_ascent.climb_id %></dd>
+      <dd>
+        <% if @first_ascent.climb.present? %>
+          <%= link_to first_ascent.climb, first_ascent.climb %>
+        <% end %>
+      </dd>
       <!-- Display climb_id end -->
 
     </dl>

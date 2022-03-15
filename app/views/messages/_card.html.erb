@@ -7,12 +7,20 @@
     <dl class="mb-1">
       <dt>Sender</dt>
       <!-- Display sender_id start -->
-      <dd><%= message.sender_id %></dd>
+      <dd>
+        <% if @message.sender.present? %>
+          <%= link_to message.sender, message.sender %>
+        <% end %>
+      </dd>
       <!-- Display sender_id end -->
 
       <dt>Reciever</dt>
       <!-- Display reciever_id start -->
-      <dd><%= message.reciever_id %></dd>
+      <dd>
+        <% if @message.reciever.present? %>
+          <%= link_to message.reciever, message.reciever %>
+        <% end %>
+      </dd>
       <!-- Display reciever_id end -->
 
       <dt>Content</dt>

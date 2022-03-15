@@ -7,7 +7,11 @@
     <dl class="mb-1">
       <dt>Region</dt>
       <!-- Display region_id start -->
-      <dd><%= mountain.region_id %></dd>
+      <dd>
+        <% if @mountain.region.present? %>
+          <%= link_to mountain.region, mountain.region %>
+        <% end %>
+      </dd>
       <!-- Display region_id end -->
 
       <dt>Mountain name</dt>

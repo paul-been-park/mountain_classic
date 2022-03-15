@@ -17,12 +17,20 @@
 
       <dt>User</dt>
       <!-- Display user_id start -->
-      <dd><%= interaction.user_id %></dd>
+      <dd>
+        <% if @interaction.user.present? %>
+          <%= link_to interaction.user, interaction.user %>
+        <% end %>
+      </dd>
       <!-- Display user_id end -->
 
       <dt>Climb</dt>
       <!-- Display climb_id start -->
-      <dd><%= interaction.climb_id %></dd>
+      <dd>
+        <% if @interaction.climb.present? %>
+          <%= link_to interaction.climb, interaction.climb %>
+        <% end %>
+      </dd>
       <!-- Display climb_id end -->
 
     </dl>

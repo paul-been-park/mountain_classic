@@ -32,7 +32,11 @@
 
       <dt>Mountain</dt>
       <!-- Display mountain_id start -->
-      <dd><%= climb.mountain_id %></dd>
+      <dd>
+        <% if @climb.mountain.present? %>
+          <%= link_to climb.mountain, climb.mountain %>
+        <% end %>
+      </dd>
       <!-- Display mountain_id end -->
 
       <dt>Description</dt>
