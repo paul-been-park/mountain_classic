@@ -1,6 +1,8 @@
 class FirstAscent < ApplicationRecord
   # Direct associations
 
+  belongs_to :legend
+
   belongs_to :climb
 
   # Indirect associations

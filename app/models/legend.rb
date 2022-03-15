@@ -1,6 +1,9 @@
 class Legend < ApplicationRecord
   # Direct associations
 
+  has_many   :first_ascents,
+             :dependent => :destroy
+
   belongs_to :user,
              :required => false
 

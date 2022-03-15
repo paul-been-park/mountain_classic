@@ -4,6 +4,8 @@ RSpec.describe Legend, type: :model do
   
     describe "Direct Associations" do
 
+    it { should have_many(:first_ascents) }
+
     it { should belong_to(:user) }
 
     end
