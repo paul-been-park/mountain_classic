@@ -1,6 +1,9 @@
 class Mountain < ApplicationRecord
   # Direct associations
 
+  has_many   :climbs,
+             :dependent => :destroy
+
   belongs_to :region
 
   # Indirect associations

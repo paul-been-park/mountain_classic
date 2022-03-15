@@ -4,6 +4,8 @@ RSpec.describe Climb, type: :model do
   
     describe "Direct Associations" do
 
+    it { should belong_to(:mountain) }
+
     end
 
     describe "InDirect Associations" do

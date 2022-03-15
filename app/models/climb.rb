@@ -1,6 +1,8 @@
 class Climb < ApplicationRecord
   # Direct associations
 
+  belongs_to :mountain
+
   # Indirect associations
 
   # Validations
