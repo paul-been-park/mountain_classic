@@ -9,6 +9,8 @@ class LegendResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :first_ascents
+
   belongs_to :user
 
   # Indirect associations
