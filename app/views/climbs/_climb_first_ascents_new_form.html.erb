@@ -7,7 +7,7 @@
     <%= f.label :legend_id %>
 
     <!-- Input for legend_id start -->
-    <%= f.text_field :legend_id, class: "form-control" %>
+    <%= f.collection_select :legend_id, Legend.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for legend_id end -->
   </div>
   <!-- Label and input for legend_id end -->

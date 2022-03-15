@@ -16,7 +16,7 @@
 
     <%= f.label :legend_id %>
     <!-- Input for legend_id start -->
-    <%= f.number_field :legend_id, class: legend_class, placeholder: "Enter legend" %>
+    <%= f.collection_select :legend_id, Legend.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for legend_id end -->
     <% if legend_was_invalid %>
       <% first_ascent.errors.full_messages_for(:legend).each do |message| %>
