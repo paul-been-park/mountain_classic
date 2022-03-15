@@ -2,13 +2,13 @@ class Climb < ApplicationRecord
   # Direct associations
 
   has_many   :interactions,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :comments,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :first_ascents,
-             :dependent => :destroy
+             dependent: :destroy
 
   belongs_to :mountain
 
@@ -21,5 +21,4 @@ class Climb < ApplicationRecord
   def to_s
     route_name
   end
-
 end

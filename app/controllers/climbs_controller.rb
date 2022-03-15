@@ -1,10 +1,11 @@
 class ClimbsController < ApplicationController
-  before_action :set_climb, only: [:show, :edit, :update, :destroy]
+  before_action :set_climb, only: %i[show edit update destroy]
 
   # GET /climbs
   def index
     @q = Climb.ransack(params[:q])
-    @climbs = @q.result(:distinct => true).includes(:mountain, :first_ascents, :comments, :interactions).page(params[:page]).per(10)
+    @climbs = @q.result(distinct: true).includes(:mountain, :first_ascents,
+                                                 :comments, :interactions).page(params[:page]).per(10)
   end
 
   # GET /climbs/1
@@ -20,17 +21,16 @@ class ClimbsController < ApplicationController
   end
 
   # GET /climbs/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /climbs
   def create
     @climb = Climb.new(climb_params)
 
     if @climb.save
-      message = 'Climb was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "Climb was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @climb, notice: message
       end
@@ -42,7 +42,7 @@ class ClimbsController < ApplicationController
   # PATCH/PUT /climbs/1
   def update
     if @climb.update(climb_params)
-      redirect_to @climb, notice: 'Climb was successfully updated.'
+      redirect_to @climb, notice: "Climb was successfully updated."
     else
       render :edit
     end
@@ -52,22 +52,23 @@ class ClimbsController < ApplicationController
   def destroy
     @climb.destroy
     message = "Climb was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to climbs_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_climb
-      @climb = Climb.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def climb_params
-      params.require(:climb).permit(:route_name, :length, :grade, :guide_url, :climb_photo, :mountain_id, :description, :classic)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_climb
+    @climb = Climb.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def climb_params
+    params.require(:climb).permit(:route_name, :length, :grade, :guide_url,
+                                  :climb_photo, :mountain_id, :description, :classic)
+  end
 end

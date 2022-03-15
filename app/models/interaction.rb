@@ -14,5 +14,4 @@ class Interaction < ApplicationRecord
   def to_s
     tick
   end
-
 end

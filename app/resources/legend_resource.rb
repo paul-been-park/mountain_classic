@@ -14,5 +14,4 @@ class LegendResource < ApplicationResource
   belongs_to :user
 
   # Indirect associations
-
 end

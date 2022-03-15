@@ -2,7 +2,7 @@ class Mountain < ApplicationRecord
   # Direct associations
 
   has_many   :climbs,
-             :dependent => :destroy
+             dependent: :destroy
 
   belongs_to :region
 
@@ -15,5 +15,4 @@ class Mountain < ApplicationRecord
   def to_s
     region.to_s
   end
-
 end

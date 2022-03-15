@@ -1,9 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Climb, type: :model do
-  
-    describe "Direct Associations" do
-
+  describe "Direct Associations" do
     it { should have_many(:interactions) }
 
     it { should have_many(:comments) }
@@ -11,14 +9,11 @@ RSpec.describe Climb, type: :model do
     it { should have_many(:first_ascents) }
 
     it { should belong_to(:mountain) }
+  end
 
-    end
+  describe "InDirect Associations" do
+  end
 
-    describe "InDirect Associations" do
-
-    end
-
-    describe "Validations" do
-
-    end
+  describe "Validations" do
+  end
 end

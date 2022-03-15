@@ -14,5 +14,4 @@ class FirstAscent < ApplicationRecord
   def to_s
     legend.to_s
   end
-
 end

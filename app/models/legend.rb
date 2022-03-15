@@ -2,10 +2,10 @@ class Legend < ApplicationRecord
   # Direct associations
 
   has_many   :first_ascents,
-             :dependent => :destroy
+             dependent: :destroy
 
   belongs_to :user,
-             :required => false
+             optional: true
 
   # Indirect associations
 
@@ -16,5 +16,4 @@ class Legend < ApplicationRecord
   def to_s
     name
   end
-
 end

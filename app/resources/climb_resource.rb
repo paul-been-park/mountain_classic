@@ -22,5 +22,4 @@ class ClimbResource < ApplicationResource
   belongs_to :mountain
 
   # Indirect associations
-
 end

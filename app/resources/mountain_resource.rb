@@ -12,5 +12,4 @@ class MountainResource < ApplicationResource
   belongs_to :region
 
   # Indirect associations
-
 end

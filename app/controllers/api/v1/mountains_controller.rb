@@ -13,7 +13,7 @@ class Api::V1::MountainsController < Api::V1::GraphitiController
     mountain = MountainResource.build(params)
 
     if mountain.save
-      render jsonapi: mountain, status: 201
+      render jsonapi: mountain, status: :created
     else
       render jsonapi_errors: mountain
     end
@@ -33,7 +33,7 @@ class Api::V1::MountainsController < Api::V1::GraphitiController
     mountain = MountainResource.find(params)
 
     if mountain.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: mountain
     end

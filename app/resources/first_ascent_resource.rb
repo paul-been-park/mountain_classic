@@ -12,5 +12,4 @@ class FirstAscentResource < ApplicationResource
   belongs_to :climb
 
   # Indirect associations
-
 end

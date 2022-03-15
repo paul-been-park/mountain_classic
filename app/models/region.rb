@@ -2,7 +2,7 @@ class Region < ApplicationRecord
   # Direct associations
 
   has_many   :mountains,
-             :dependent => :destroy
+             dependent: :destroy
 
   # Indirect associations
 
@@ -13,5 +13,4 @@ class Region < ApplicationRecord
   def to_s
     region_name
   end
-
 end

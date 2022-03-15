@@ -1,10 +1,11 @@
 class MountainsController < ApplicationController
-  before_action :set_mountain, only: [:show, :edit, :update, :destroy]
+  before_action :set_mountain, only: %i[show edit update destroy]
 
   # GET /mountains
   def index
     @q = Mountain.ransack(params[:q])
-    @mountains = @q.result(:distinct => true).includes(:region, :climbs).page(params[:page]).per(10)
+    @mountains = @q.result(distinct: true).includes(:region,
+                                                    :climbs).page(params[:page]).per(10)
   end
 
   # GET /mountains/1
@@ -18,17 +19,16 @@ class MountainsController < ApplicationController
   end
 
   # GET /mountains/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /mountains
   def create
     @mountain = Mountain.new(mountain_params)
 
     if @mountain.save
-      message = 'Mountain was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "Mountain was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @mountain, notice: message
       end
@@ -40,7 +40,7 @@ class MountainsController < ApplicationController
   # PATCH/PUT /mountains/1
   def update
     if @mountain.update(mountain_params)
-      redirect_to @mountain, notice: 'Mountain was successfully updated.'
+      redirect_to @mountain, notice: "Mountain was successfully updated."
     else
       render :edit
     end
@@ -50,22 +50,22 @@ class MountainsController < ApplicationController
   def destroy
     @mountain.destroy
     message = "Mountain was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to mountains_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_mountain
-      @mountain = Mountain.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def mountain_params
-      params.require(:mountain).permit(:region_id, :mountain_name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_mountain
+    @mountain = Mountain.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def mountain_params
+    params.require(:mountain).permit(:region_id, :mountain_name)
+  end
 end

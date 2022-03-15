@@ -13,7 +13,7 @@ class Api::V1::InteractionsController < Api::V1::GraphitiController
     interaction = InteractionResource.build(params)
 
     if interaction.save
-      render jsonapi: interaction, status: 201
+      render jsonapi: interaction, status: :created
     else
       render jsonapi_errors: interaction
     end
@@ -33,7 +33,7 @@ class Api::V1::InteractionsController < Api::V1::GraphitiController
     interaction = InteractionResource.find(params)
 
     if interaction.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: interaction
     end

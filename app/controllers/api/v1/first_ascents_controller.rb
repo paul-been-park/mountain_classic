@@ -13,7 +13,7 @@ class Api::V1::FirstAscentsController < Api::V1::GraphitiController
     first_ascent = FirstAscentResource.build(params)
 
     if first_ascent.save
-      render jsonapi: first_ascent, status: 201
+      render jsonapi: first_ascent, status: :created
     else
       render jsonapi_errors: first_ascent
     end
@@ -33,7 +33,7 @@ class Api::V1::FirstAscentsController < Api::V1::GraphitiController
     first_ascent = FirstAscentResource.find(params)
 
     if first_ascent.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: first_ascent
     end

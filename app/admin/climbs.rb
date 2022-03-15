@@ -1,6 +1,6 @@
 ActiveAdmin.register Climb do
-
- permit_params :route_name, :length, :grade, :guide_url, :climb_photo, :mountain_id, :description, :classic
+  permit_params :route_name, :length, :grade, :guide_url, :climb_photo,
+                :mountain_id, :description, :classic
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -14,5 +14,4 @@ ActiveAdmin.register Climb do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
 end

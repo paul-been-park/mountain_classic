@@ -13,7 +13,7 @@ class Api::V1::ClimbsController < Api::V1::GraphitiController
     climb = ClimbResource.build(params)
 
     if climb.save
-      render jsonapi: climb, status: 201
+      render jsonapi: climb, status: :created
     else
       render jsonapi_errors: climb
     end
@@ -33,7 +33,7 @@ class Api::V1::ClimbsController < Api::V1::GraphitiController
     climb = ClimbResource.find(params)
 
     if climb.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: climb
     end

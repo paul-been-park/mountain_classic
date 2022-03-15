@@ -1,10 +1,11 @@
 class LegendsController < ApplicationController
-  before_action :set_legend, only: [:show, :edit, :update, :destroy]
+  before_action :set_legend, only: %i[show edit update destroy]
 
   # GET /legends
   def index
     @q = Legend.ransack(params[:q])
-    @legends = @q.result(:distinct => true).includes(:user, :first_ascents).page(params[:page]).per(10)
+    @legends = @q.result(distinct: true).includes(:user,
+                                                  :first_ascents).page(params[:page]).per(10)
   end
 
   # GET /legends/1
@@ -18,17 +19,16 @@ class LegendsController < ApplicationController
   end
 
   # GET /legends/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /legends
   def create
     @legend = Legend.new(legend_params)
 
     if @legend.save
-      message = 'Legend was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "Legend was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @legend, notice: message
       end
@@ -40,7 +40,7 @@ class LegendsController < ApplicationController
   # PATCH/PUT /legends/1
   def update
     if @legend.update(legend_params)
-      redirect_to @legend, notice: 'Legend was successfully updated.'
+      redirect_to @legend, notice: "Legend was successfully updated."
     else
       render :edit
     end
@@ -50,22 +50,22 @@ class LegendsController < ApplicationController
   def destroy
     @legend.destroy
     message = "Legend was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to legends_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_legend
-      @legend = Legend.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def legend_params
-      params.require(:legend).permit(:name, :photo, :bio, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_legend
+    @legend = Legend.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def legend_params
+    params.require(:legend).permit(:name, :photo, :bio, :user_id)
+  end
 end

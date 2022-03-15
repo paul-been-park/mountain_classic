@@ -14,5 +14,4 @@ class Comment < ApplicationRecord
   def to_s
     created_at
   end
-
 end

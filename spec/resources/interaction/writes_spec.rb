@@ -1,13 +1,13 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe InteractionResource, type: :resource do
-  describe 'creating' do
+  describe "creating" do
     let(:payload) do
       {
         data: {
-          type: 'interactions',
-          attributes: { }
-        }
+          type: "interactions",
+          attributes: {},
+        },
       }
     end
 
@@ -15,23 +15,24 @@ RSpec.describe InteractionResource, type: :resource do
       InteractionResource.build(payload)
     end
 
-    it 'works' do
-      expect {
-        expect(instance.save).to eq(true), instance.errors.full_messages.to_sentence
-      }.to change { Interaction.count }.by(1)
+    it "works" do
+      expect do
+        expect(instance.save).to eq(true),
+                                 instance.errors.full_messages.to_sentence
+      end.to change { Interaction.count }.by(1)
     end
   end
 
-  describe 'updating' do
+  describe "updating" do
     let!(:interaction) { create(:interaction) }
 
     let(:payload) do
       {
         data: {
           id: interaction.id.to_s,
-          type: 'interactions',
-          attributes: { } # Todo!
-        }
+          type: "interactions",
+          attributes: {}, # Todo!
+        },
       }
     end
 
@@ -39,25 +40,25 @@ RSpec.describe InteractionResource, type: :resource do
       InteractionResource.find(payload)
     end
 
-    xit 'works (add some attributes and enable this spec)' do
-      expect {
+    xit "works (add some attributes and enable this spec)" do
+      expect do
         expect(instance.update_attributes).to eq(true)
-      }.to change { interaction.reload.updated_at }
+      end.to change { interaction.reload.updated_at }
       # .and change { interaction.foo }.to('bar') <- example
     end
   end
 
-  describe 'destroying' do
+  describe "destroying" do
     let!(:interaction) { create(:interaction) }
 
     let(:instance) do
       InteractionResource.find(id: interaction.id)
     end
 
-    it 'works' do
-      expect {
+    it "works" do
+      expect do
         expect(instance.destroy).to eq(true)
-      }.to change { Interaction.count }.by(-1)
+      end.to change { Interaction.count }.by(-1)
     end
   end
 end

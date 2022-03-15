@@ -13,7 +13,7 @@ class Api::V1::LegendsController < Api::V1::GraphitiController
     legend = LegendResource.build(params)
 
     if legend.save
-      render jsonapi: legend, status: 201
+      render jsonapi: legend, status: :created
     else
       render jsonapi_errors: legend
     end
@@ -33,7 +33,7 @@ class Api::V1::LegendsController < Api::V1::GraphitiController
     legend = LegendResource.find(params)
 
     if legend.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: legend
     end

@@ -6,8 +6,7 @@ class RegionResource < ApplicationResource
 
   # Direct associations
 
-  has_many   :mountains
+  has_many :mountains
 
   # Indirect associations
-
 end
