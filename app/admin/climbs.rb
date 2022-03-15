@@ -1,6 +1,6 @@
 ActiveAdmin.register Climb do
   permit_params :route_name, :length, :grade, :guide_url, :climb_photo,
-                :mountain_id, :description, :classic
+                :mountain_id, :description, :classic, :location
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

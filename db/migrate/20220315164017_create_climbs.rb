@@ -9,6 +9,7 @@ class CreateClimbs < ActiveRecord::Migration[6.0]
       t.integer :mountain_id
       t.string :description
       t.string :classic
+      t.string :location
 
       t.timestamps
     end
