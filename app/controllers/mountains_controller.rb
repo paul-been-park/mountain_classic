@@ -3,7 +3,7 @@ class MountainsController < ApplicationController
 
   # GET /mountains
   def index
-    @mountains = Mountain.all
+    @mountains = Mountain.page(params[:page]).per(10)
   end
 
   # GET /mountains/1

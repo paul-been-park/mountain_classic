@@ -34,6 +34,10 @@
       <div class="list-group list-group-flush">
         <%= render collection: @mountains, partial: "list_item", as: :mountain %>
       </div>
+      <div class="card-footer d-flex justify-content-center">
+        <%= paginate @mountains, theme: 'twitter-bootstrap-4' %>
+      </div>
+
     </div>
   </div>
 </div>

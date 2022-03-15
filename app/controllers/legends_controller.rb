@@ -3,7 +3,7 @@ class LegendsController < ApplicationController
 
   # GET /legends
   def index
-    @legends = Legend.all
+    @legends = Legend.page(params[:page]).per(10)
   end
 
   # GET /legends/1

@@ -3,7 +3,7 @@ class ClimbsController < ApplicationController
 
   # GET /climbs
   def index
-    @climbs = Climb.all
+    @climbs = Climb.page(params[:page]).per(10)
   end
 
   # GET /climbs/1

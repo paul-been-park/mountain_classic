@@ -3,7 +3,7 @@ class InteractionsController < ApplicationController
 
   # GET /interactions
   def index
-    @interactions = Interaction.all
+    @interactions = Interaction.page(params[:page]).per(10)
   end
 
   # GET /interactions/1
