@@ -8,6 +8,9 @@ class UserResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :ticks,
+             resource: InteractionResource
+
   has_many   :interactions,
              resource: CommentResource
 
