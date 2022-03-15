@@ -27,7 +27,7 @@
   <div class="form-group">
     <%= f.label :climb_photo %>
 
-    <%= f.text_field :climb_photo, class: "form-control" %>
+    <%= f.file_field :climb_photo, class: "form-control" %>
   </div>
 
   <%= f.hidden_field :mountain_id, value: @mountain.id %>
@@ -42,6 +42,12 @@
     <%= f.label :classic %>
 
     <%= f.text_field :classic, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :location %>
+
+    <%= f.text_field :location, class: "form-control" %>
   </div>
 
   <%= f.submit "Create climb", class: "btn btn-block btn-outline-secondary" %>

@@ -18,7 +18,9 @@
       <dd><%= climb.guide_url %></dd>
 
       <dt>Climb photo</dt>
-      <dd><%= climb.climb_photo %></dd>
+      <dd>
+        <%= cl_image_tag @climb.climb_photo, class: "img-fluid" %>
+      </dd>
 
       <dt>Mountain</dt>
       <dd>
@@ -32,6 +34,13 @@
 
       <dt>Classic</dt>
       <dd><%= climb.classic %></dd>
+
+      <dt>Location</dt>
+      <dd>
+        <div>
+          <%= render partial: "climbs/one_photo_map" %>
+        </div>
+      </dd>
 
     </dl>
 

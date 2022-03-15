@@ -10,6 +10,7 @@ class ClimbResource < ApplicationResource
   attribute :mountain_id, :integer
   attribute :description, :string
   attribute :classic, :string
+  attribute :location, :string
 
   # Direct associations
 

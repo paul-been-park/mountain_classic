@@ -5,6 +5,10 @@ class ClimbsController < ApplicationController
     @q = Climb.ransack(params[:q])
     @climbs = @q.result(distinct: true).includes(:mountain, :first_ascents,
                                                  :comments, :interactions).page(params[:page]).per(10)
+    @location_hash = Gmaps4rails.build_markers(@climbs.where.not(location_latitude: nil)) do |climb, marker|
+      marker.lat climb.location_latitude
+      marker.lng climb.location_longitude
+    end
   end
 
   def show
@@ -60,6 +64,6 @@ class ClimbsController < ApplicationController
 
   def climb_params
     params.require(:climb).permit(:route_name, :length, :grade, :guide_url,
-                                  :climb_photo, :mountain_id, :description, :classic)
+                                  :climb_photo, :mountain_id, :description, :classic, :location)
   end
 end

@@ -36,7 +36,7 @@
     <% end %>
 
     <%= f.label :photo %>
-    <%= f.text_field :photo, class: photo_class, placeholder: "Enter photo" %>
+    <%= f.file_field :photo, class: "form-control" %>
     <% if photo_was_invalid %>
       <% legend.errors.full_messages_for(:photo).each do |message| %>
         <div class="invalid-feedback d-flex">

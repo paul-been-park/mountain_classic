@@ -9,7 +9,9 @@
       <dd><%= legend.name %></dd>
 
       <dt>Photo</dt>
-      <dd><%= legend.photo %></dd>
+      <dd>
+        <%= cl_image_tag @legend.photo, class: "img-fluid" %>
+      </dd>
 
       <dt>Bio</dt>
       <dd><%= legend.bio %></dd>
