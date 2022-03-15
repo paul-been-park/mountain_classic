@@ -1,6 +1,9 @@
 class Climb < ApplicationRecord
   # Direct associations
 
+  has_many   :comments,
+             :dependent => :destroy
+
   has_many   :first_ascents,
              :dependent => :destroy
 
