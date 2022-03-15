@@ -1,0 +1,57 @@
+<% was_validated = first_ascent.errors.any? %>
+
+<%= form_with(model: first_ascent, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for legend_id start -->
+  <div class="form-group">
+    <% legend_class = "form-control" %>
+    <% legend_was_invalid = first_ascent.errors.include?(:legend) %>
+
+    <% if was_validated %>
+      <% if legend_was_invalid %>
+        <% legend_class << " is-invalid" %>
+      <% else %>
+        <% legend_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :legend_id %>
+    <!-- Input for legend_id start -->
+    <%= f.number_field :legend_id, class: legend_class, placeholder: "Enter legend" %>
+    <!-- Input for legend_id end -->
+    <% if legend_was_invalid %>
+      <% first_ascent.errors.full_messages_for(:legend).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for legend_id end -->
+  <!-- Label and input for climb_id start -->
+  <div class="form-group">
+    <% climb_class = "form-control" %>
+    <% climb_was_invalid = first_ascent.errors.include?(:climb) %>
+
+    <% if was_validated %>
+      <% if climb_was_invalid %>
+        <% climb_class << " is-invalid" %>
+      <% else %>
+        <% climb_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :climb_id %>
+    <!-- Input for climb_id start -->
+    <%= f.number_field :climb_id, class: climb_class, placeholder: "Enter climb" %>
+    <!-- Input for climb_id end -->
+    <% if climb_was_invalid %>
+      <% first_ascent.errors.full_messages_for(:climb).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for climb_id end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>

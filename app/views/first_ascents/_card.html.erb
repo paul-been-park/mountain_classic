@@ -1,0 +1,46 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    First Ascent #<%= first_ascent.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Legend</dt>
+      <!-- Display legend_id start -->
+      <dd><%= first_ascent.legend_id %></dd>
+      <!-- Display legend_id end -->
+
+      <dt>Climb</dt>
+      <!-- Display climb_id start -->
+      <dd><%= first_ascent.climb_id %></dd>
+      <!-- Display climb_id end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back first_ascent, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link first_ascent start -->
+      <div class="col">
+        <%= link_to edit_first_ascent_url(first_ascent), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link first_ascent end -->
+
+      <!-- Delete link first_ascent start -->
+      <div class="col">
+        <%= link_to first_ascent, method: :delete, data: { confirm: "Do you really want to delete this first_ascent?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link first_ascent end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(first_ascent.updated_at) %> ago
+  </div>
+</div>

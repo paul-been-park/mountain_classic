@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :first_ascents
   resources :legends
   resources :messages
   resources :comments
