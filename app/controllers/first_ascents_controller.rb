@@ -24,7 +24,12 @@ class FirstAscentsController < ApplicationController
     @first_ascent = FirstAscent.new(first_ascent_params)
 
     if @first_ascent.save
-      redirect_to @first_ascent, notice: 'First ascent was successfully created.'
+      message = 'FirstAscent was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @first_ascent, notice: message
+      end
     else
       render :new
     end

@@ -8,6 +8,7 @@ class RegionsController < ApplicationController
 
   # GET /regions/1
   def show
+    @mountain = Mountain.new
   end
 
   # GET /regions/new

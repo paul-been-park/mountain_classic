@@ -1,0 +1,22 @@
+<!-- Form mountain start -->
+<%= form_with(model: @mountain, local: true) do |f| %>
+<!-- Form mountain end -->
+
+  <!-- Label and input for region_id start -->
+  <!-- Input for region_id start -->
+  <%= f.hidden_field :region_id, value: @region.id %>
+  <!-- Input for region_id end -->
+  <!-- Label and input for region_id end -->
+
+  <!-- Label and input for mountain_name start -->
+  <div class="form-group">
+    <%= f.label :mountain_name %>
+
+    <!-- Input for mountain_name start -->
+    <%= f.text_field :mountain_name, class: "form-control" %>
+    <!-- Input for mountain_name end -->
+  </div>
+  <!-- Label and input for mountain_name end -->
+
+  <%= f.submit "Create mountain", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

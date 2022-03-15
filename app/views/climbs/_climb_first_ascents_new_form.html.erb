@@ -1,0 +1,22 @@
+<!-- Form first_ascent start -->
+<%= form_with(model: @first_ascent, local: true) do |f| %>
+<!-- Form first_ascent end -->
+
+  <!-- Label and input for legend_id start -->
+  <div class="form-group">
+    <%= f.label :legend_id %>
+
+    <!-- Input for legend_id start -->
+    <%= f.text_field :legend_id, class: "form-control" %>
+    <!-- Input for legend_id end -->
+  </div>
+  <!-- Label and input for legend_id end -->
+
+  <!-- Label and input for climb_id start -->
+  <!-- Input for climb_id start -->
+  <%= f.hidden_field :climb_id, value: @climb.id %>
+  <!-- Input for climb_id end -->
+  <!-- Label and input for climb_id end -->
+
+  <%= f.submit "Create first ascent", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

@@ -8,6 +8,7 @@ class LegendsController < ApplicationController
 
   # GET /legends/1
   def show
+    @first_ascent = FirstAscent.new
   end
 
   # GET /legends/new
@@ -24,7 +25,12 @@ class LegendsController < ApplicationController
     @legend = Legend.new(legend_params)
 
     if @legend.save
-      redirect_to @legend, notice: 'Legend was successfully created.'
+      message = 'Legend was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @legend, notice: message
+      end
     else
       render :new
     end

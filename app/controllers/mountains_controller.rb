@@ -8,6 +8,7 @@ class MountainsController < ApplicationController
 
   # GET /mountains/1
   def show
+    @climb = Climb.new
   end
 
   # GET /mountains/new
@@ -24,7 +25,12 @@ class MountainsController < ApplicationController
     @mountain = Mountain.new(mountain_params)
 
     if @mountain.save
-      redirect_to @mountain, notice: 'Mountain was successfully created.'
+      message = 'Mountain was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @mountain, notice: message
+      end
     else
       render :new
     end

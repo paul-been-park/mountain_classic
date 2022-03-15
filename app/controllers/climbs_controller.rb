@@ -8,6 +8,9 @@ class ClimbsController < ApplicationController
 
   # GET /climbs/1
   def show
+    @interaction = Interaction.new
+    @comment = Comment.new
+    @first_ascent = FirstAscent.new
   end
 
   # GET /climbs/new
@@ -24,7 +27,12 @@ class ClimbsController < ApplicationController
     @climb = Climb.new(climb_params)
 
     if @climb.save
-      redirect_to @climb, notice: 'Climb was successfully created.'
+      message = 'Climb was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @climb, notice: message
+      end
     else
       render :new
     end
