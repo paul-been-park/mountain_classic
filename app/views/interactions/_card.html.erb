@@ -1,0 +1,56 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Interaction #<%= interaction.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Tick</dt>
+      <!-- Display tick start -->
+      <dd><%= interaction.tick %></dd>
+      <!-- Display tick end -->
+
+      <dt>Summited</dt>
+      <!-- Display summited start -->
+      <dd><%= interaction.summited %></dd>
+      <!-- Display summited end -->
+
+      <dt>User</dt>
+      <!-- Display user_id start -->
+      <dd><%= interaction.user_id %></dd>
+      <!-- Display user_id end -->
+
+      <dt>Climb</dt>
+      <!-- Display climb_id start -->
+      <dd><%= interaction.climb_id %></dd>
+      <!-- Display climb_id end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back interaction, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link interaction start -->
+      <div class="col">
+        <%= link_to edit_interaction_url(interaction), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link interaction end -->
+
+      <!-- Delete link interaction start -->
+      <div class="col">
+        <%= link_to interaction, method: :delete, data: { confirm: "Do you really want to delete this interaction?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link interaction end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(interaction.updated_at) %> ago
+  </div>
+</div>
