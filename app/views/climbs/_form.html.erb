@@ -146,7 +146,7 @@
 
     <%= f.label :mountain_id %>
     <!-- Input for mountain_id start -->
-    <%= f.number_field :mountain_id, class: mountain_class, placeholder: "Enter mountain" %>
+    <%= f.collection_select :mountain_id, Mountain.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for mountain_id end -->
     <% if mountain_was_invalid %>
       <% climb.errors.full_messages_for(:mountain).each do |message| %>
