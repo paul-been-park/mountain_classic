@@ -1,6 +1,11 @@
 class User < ApplicationRecord
   # Direct associations
 
+  has_many   :received,
+             :class_name => "Message",
+             :foreign_key => "reciever_id",
+             :dependent => :destroy
+
   has_many   :sent,
              :class_name => "Message",
              :foreign_key => "sender_id",
