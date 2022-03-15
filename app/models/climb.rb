@@ -36,6 +36,14 @@ class Climb < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :users_interactions,
+             through: :comments,
+             source: :user
+
+  has_many   :legends,
+             through: :first_ascents,
+             source: :legend
+
   # Validations
 
   # Scopes

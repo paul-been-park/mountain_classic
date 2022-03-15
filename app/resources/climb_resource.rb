@@ -23,4 +23,9 @@ class ClimbResource < ApplicationResource
   belongs_to :mountain
 
   # Indirect associations
+
+  many_to_many :users_interactions,
+               resource: UserResource
+
+  many_to_many :legends
 end

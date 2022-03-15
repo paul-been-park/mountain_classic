@@ -12,6 +12,9 @@ RSpec.describe Climb, type: :model do
   end
 
   describe "InDirect Associations" do
+    it { should have_many(:users_interactions) }
+
+    it { should have_many(:legends) }
   end
 
   describe "Validations" do
