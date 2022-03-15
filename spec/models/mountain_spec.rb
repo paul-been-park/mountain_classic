@@ -11,5 +11,6 @@ RSpec.describe Mountain, type: :model do
   end
 
   describe "Validations" do
+    it { should validate_presence_of(:mountain_name) }
   end
 end
