@@ -1,0 +1,83 @@
+<% was_validated = message.errors.any? %>
+
+<%= form_with(model: message, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for sender_id start -->
+  <div class="form-group">
+    <% sender_class = "form-control" %>
+    <% sender_was_invalid = message.errors.include?(:sender) %>
+
+    <% if was_validated %>
+      <% if sender_was_invalid %>
+        <% sender_class << " is-invalid" %>
+      <% else %>
+        <% sender_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :sender_id %>
+    <!-- Input for sender_id start -->
+    <%= f.number_field :sender_id, class: sender_class, placeholder: "Enter sender" %>
+    <!-- Input for sender_id end -->
+    <% if sender_was_invalid %>
+      <% message.errors.full_messages_for(:sender).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for sender_id end -->
+  <!-- Label and input for reciever_id start -->
+  <div class="form-group">
+    <% reciever_class = "form-control" %>
+    <% reciever_was_invalid = message.errors.include?(:reciever) %>
+
+    <% if was_validated %>
+      <% if reciever_was_invalid %>
+        <% reciever_class << " is-invalid" %>
+      <% else %>
+        <% reciever_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :reciever_id %>
+    <!-- Input for reciever_id start -->
+    <%= f.number_field :reciever_id, class: reciever_class, placeholder: "Enter reciever" %>
+    <!-- Input for reciever_id end -->
+    <% if reciever_was_invalid %>
+      <% message.errors.full_messages_for(:reciever).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for reciever_id end -->
+  <!-- Label and input for content start -->
+  <div class="form-group">
+    <% content_class = "form-control" %>
+    <% content_was_invalid = message.errors.include?(:content) %>
+
+    <% if was_validated %>
+      <% if content_was_invalid %>
+        <% content_class << " is-invalid" %>
+      <% else %>
+        <% content_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :content %>
+    <!-- Input for content start -->
+    <%= f.text_field :content, class: content_class, placeholder: "Enter content" %>
+    <!-- Input for content end -->
+    <% if content_was_invalid %>
+      <% message.errors.full_messages_for(:content).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for content end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
