@@ -7,6 +7,8 @@ class MountainResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :climbs
+
   belongs_to :region
 
   # Indirect associations

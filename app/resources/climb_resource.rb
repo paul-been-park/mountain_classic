@@ -13,6 +13,8 @@ class ClimbResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :mountain
+
   # Indirect associations
 
 end
