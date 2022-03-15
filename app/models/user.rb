@@ -25,6 +25,10 @@ class User < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :climb_interactions,
+             through: :interactions,
+             source: :climb
+
   # Validations
 
   # Scopes

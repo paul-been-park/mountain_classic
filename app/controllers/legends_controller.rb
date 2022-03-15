@@ -3,8 +3,8 @@ class LegendsController < ApplicationController
 
   def index
     @q = Legend.ransack(params[:q])
-    @legends = @q.result(distinct: true).includes(:user,
-                                                  :first_ascents).page(params[:page]).per(10)
+    @legends = @q.result(distinct: true).includes(:user, :first_ascents,
+                                                  :climbs).page(params[:page]).per(10)
   end
 
   def show

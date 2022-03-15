@@ -10,8 +10,6 @@ class Mountain < ApplicationRecord
 
   # Validations
 
-  validates :mountain_name, presence: true
-
   # Scopes
 
   def to_s

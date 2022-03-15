@@ -25,4 +25,7 @@ class UserResource < ApplicationResource
              resource: CommentResource
 
   # Indirect associations
+
+  many_to_many :climb_interactions,
+               resource: ClimbResource
 end
