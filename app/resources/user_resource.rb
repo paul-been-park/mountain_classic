@@ -8,6 +8,8 @@ class UserResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :legends
+
   has_many   :received,
              resource: MessageResource,
              foreign_key: :reciever_id
