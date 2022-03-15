@@ -42,8 +42,14 @@ class ClimbsController < ApplicationController
   # DELETE /climbs/1
   def destroy
     @climb.destroy
-    redirect_to climbs_url, notice: 'Climb was successfully destroyed.'
+    message = "Climb was successfully deleted."
+    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referrer, notice: message
+    else
+      redirect_to climbs_url, notice: message
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
