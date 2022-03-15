@@ -1,25 +1,20 @@
 class InteractionsController < ApplicationController
   before_action :set_interaction, only: %i[show edit update destroy]
 
-  # GET /interactions
   def index
     @q = Interaction.ransack(params[:q])
     @interactions = @q.result(distinct: true).includes(:user,
                                                        :climb).page(params[:page]).per(10)
   end
 
-  # GET /interactions/1
   def show; end
 
-  # GET /interactions/new
   def new
     @interaction = Interaction.new
   end
 
-  # GET /interactions/1/edit
   def edit; end
 
-  # POST /interactions
   def create
     @interaction = Interaction.new(interaction_params)
 
@@ -35,7 +30,6 @@ class InteractionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /interactions/1
   def update
     if @interaction.update(interaction_params)
       redirect_to @interaction, notice: "Interaction was successfully updated."
@@ -44,7 +38,6 @@ class InteractionsController < ApplicationController
     end
   end
 
-  # DELETE /interactions/1
   def destroy
     @interaction.destroy
     message = "Interaction was successfully deleted."
@@ -57,12 +50,10 @@ class InteractionsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_interaction
     @interaction = Interaction.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def interaction_params
     params.require(:interaction).permit(:tick, :summited, :user_id, :climb_id)
   end

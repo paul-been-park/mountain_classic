@@ -1,29 +1,24 @@
 class ClimbsController < ApplicationController
   before_action :set_climb, only: %i[show edit update destroy]
 
-  # GET /climbs
   def index
     @q = Climb.ransack(params[:q])
     @climbs = @q.result(distinct: true).includes(:mountain, :first_ascents,
                                                  :comments, :interactions).page(params[:page]).per(10)
   end
 
-  # GET /climbs/1
   def show
     @interaction = Interaction.new
     @comment = Comment.new
     @first_ascent = FirstAscent.new
   end
 
-  # GET /climbs/new
   def new
     @climb = Climb.new
   end
 
-  # GET /climbs/1/edit
   def edit; end
 
-  # POST /climbs
   def create
     @climb = Climb.new(climb_params)
 
@@ -39,7 +34,6 @@ class ClimbsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /climbs/1
   def update
     if @climb.update(climb_params)
       redirect_to @climb, notice: "Climb was successfully updated."
@@ -48,7 +42,6 @@ class ClimbsController < ApplicationController
     end
   end
 
-  # DELETE /climbs/1
   def destroy
     @climb.destroy
     message = "Climb was successfully deleted."
@@ -61,12 +54,10 @@ class ClimbsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_climb
     @climb = Climb.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def climb_params
     params.require(:climb).permit(:route_name, :length, :grade, :guide_url,
                                   :climb_photo, :mountain_id, :description, :classic)
