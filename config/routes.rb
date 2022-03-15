@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :legends
   resources :messages
   resources :comments
   resources :climbs
