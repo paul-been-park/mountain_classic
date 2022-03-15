@@ -3,7 +3,8 @@ class ClimbsController < ApplicationController
 
   # GET /climbs
   def index
-    @climbs = Climb.page(params[:page]).per(10)
+    @q = Climb.ransack(params[:q])
+    @climbs = @q.result(:distinct => true).includes(:mountain, :first_ascents, :comments, :interactions).page(params[:page]).per(10)
   end
 
   # GET /climbs/1

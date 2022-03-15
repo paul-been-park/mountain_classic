@@ -3,7 +3,8 @@ class LegendsController < ApplicationController
 
   # GET /legends
   def index
-    @legends = Legend.page(params[:page]).per(10)
+    @q = Legend.ransack(params[:q])
+    @legends = @q.result(:distinct => true).includes(:user, :first_ascents).page(params[:page]).per(10)
   end
 
   # GET /legends/1

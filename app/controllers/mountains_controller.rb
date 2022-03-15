@@ -3,7 +3,8 @@ class MountainsController < ApplicationController
 
   # GET /mountains
   def index
-    @mountains = Mountain.page(params[:page]).per(10)
+    @q = Mountain.ransack(params[:q])
+    @mountains = @q.result(:distinct => true).includes(:region, :climbs).page(params[:page]).per(10)
   end
 
   # GET /mountains/1

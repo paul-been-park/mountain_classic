@@ -3,7 +3,8 @@ class FirstAscentsController < ApplicationController
 
   # GET /first_ascents
   def index
-    @first_ascents = FirstAscent.page(params[:page]).per(10)
+    @q = FirstAscent.ransack(params[:q])
+    @first_ascents = @q.result(:distinct => true).includes(:climb, :legend).page(params[:page]).per(10)
   end
 
   # GET /first_ascents/1

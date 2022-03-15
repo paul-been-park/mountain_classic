@@ -3,7 +3,8 @@ class InteractionsController < ApplicationController
 
   # GET /interactions
   def index
-    @interactions = Interaction.page(params[:page]).per(10)
+    @q = Interaction.ransack(params[:q])
+    @interactions = @q.result(:distinct => true).includes(:user, :climb).page(params[:page]).per(10)
   end
 
   # GET /interactions/1
