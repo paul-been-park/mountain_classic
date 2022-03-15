@@ -1,32 +1,18 @@
-<!-- Form message start -->
 <%= form_with(model: @message, local: true) do |f| %>
-<!-- Form message end -->
 
-  <!-- Label and input for sender_id start -->
   <div class="form-group">
     <%= f.label :sender_id %>
 
-    <!-- Input for sender_id start -->
     <%= f.text_field :sender_id, class: "form-control" %>
-    <!-- Input for sender_id end -->
   </div>
-  <!-- Label and input for sender_id end -->
 
-  <!-- Label and input for reciever_id start -->
-  <!-- Input for reciever_id start -->
   <%= f.hidden_field :reciever_id, value: @user.id %>
-  <!-- Input for reciever_id end -->
-  <!-- Label and input for reciever_id end -->
 
-  <!-- Label and input for content start -->
   <div class="form-group">
     <%= f.label :content %>
 
-    <!-- Input for content start -->
     <%= f.text_field :content, class: "form-control" %>
-    <!-- Input for content end -->
   </div>
-  <!-- Label and input for content end -->
 
   <%= f.submit "Create message", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

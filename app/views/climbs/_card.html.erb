@@ -6,48 +6,32 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Route name</dt>
-      <!-- Display route_name start -->
       <dd><%= climb.route_name %></dd>
-      <!-- Display route_name end -->
 
       <dt>Length</dt>
-      <!-- Display length start -->
       <dd><%= climb.length %></dd>
-      <!-- Display length end -->
 
       <dt>Grade</dt>
-      <!-- Display grade start -->
       <dd><%= climb.grade %></dd>
-      <!-- Display grade end -->
 
       <dt>Guide url</dt>
-      <!-- Display guide_url start -->
       <dd><%= climb.guide_url %></dd>
-      <!-- Display guide_url end -->
 
       <dt>Climb photo</dt>
-      <!-- Display climb_photo start -->
       <dd><%= climb.climb_photo %></dd>
-      <!-- Display climb_photo end -->
 
       <dt>Mountain</dt>
-      <!-- Display mountain_id start -->
       <dd>
         <% if @climb.mountain.present? %>
           <%= link_to climb.mountain, climb.mountain %>
         <% end %>
       </dd>
-      <!-- Display mountain_id end -->
 
       <dt>Description</dt>
-      <!-- Display description start -->
       <dd><%= climb.description %></dd>
-      <!-- Display description end -->
 
       <dt>Classic</dt>
-      <!-- Display classic start -->
       <dd><%= climb.classic %></dd>
-      <!-- Display classic end -->
 
     </dl>
 
@@ -56,21 +40,17 @@
         <%= link_to_show_or_back climb, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link climb start -->
       <div class="col">
         <%= link_to edit_climb_url(climb), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link climb end -->
 
-      <!-- Delete link climb start -->
       <div class="col">
         <%= link_to climb, method: :delete, data: { confirm: "Do you really want to delete this climb?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link climb end -->
     </div>
   </div>
 

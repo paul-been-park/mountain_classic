@@ -1,82 +1,48 @@
-<!-- Form climb start -->
 <%= form_with(model: @climb, local: true) do |f| %>
-<!-- Form climb end -->
 
-  <!-- Label and input for route_name start -->
   <div class="form-group">
     <%= f.label :route_name %>
 
-    <!-- Input for route_name start -->
     <%= f.text_field :route_name, class: "form-control" %>
-    <!-- Input for route_name end -->
   </div>
-  <!-- Label and input for route_name end -->
 
-  <!-- Label and input for length start -->
   <div class="form-group">
     <%= f.label :length %>
 
-    <!-- Input for length start -->
     <%= f.text_field :length, class: "form-control" %>
-    <!-- Input for length end -->
   </div>
-  <!-- Label and input for length end -->
 
-  <!-- Label and input for grade start -->
   <div class="form-group">
     <%= f.label :grade %>
 
-    <!-- Input for grade start -->
     <%= f.text_field :grade, class: "form-control" %>
-    <!-- Input for grade end -->
   </div>
-  <!-- Label and input for grade end -->
 
-  <!-- Label and input for guide_url start -->
   <div class="form-group">
     <%= f.label :guide_url %>
 
-    <!-- Input for guide_url start -->
     <%= f.text_field :guide_url, class: "form-control" %>
-    <!-- Input for guide_url end -->
   </div>
-  <!-- Label and input for guide_url end -->
 
-  <!-- Label and input for climb_photo start -->
   <div class="form-group">
     <%= f.label :climb_photo %>
 
-    <!-- Input for climb_photo start -->
     <%= f.text_field :climb_photo, class: "form-control" %>
-    <!-- Input for climb_photo end -->
   </div>
-  <!-- Label and input for climb_photo end -->
 
-  <!-- Label and input for mountain_id start -->
-  <!-- Input for mountain_id start -->
   <%= f.hidden_field :mountain_id, value: @mountain.id %>
-  <!-- Input for mountain_id end -->
-  <!-- Label and input for mountain_id end -->
 
-  <!-- Label and input for description start -->
   <div class="form-group">
     <%= f.label :description %>
 
-    <!-- Input for description start -->
     <%= f.text_field :description, class: "form-control" %>
-    <!-- Input for description end -->
   </div>
-  <!-- Label and input for description end -->
 
-  <!-- Label and input for classic start -->
   <div class="form-group">
     <%= f.label :classic %>
 
-    <!-- Input for classic start -->
     <%= f.text_field :classic, class: "form-control" %>
-    <!-- Input for classic end -->
   </div>
-  <!-- Label and input for classic end -->
 
   <%= f.submit "Create climb", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

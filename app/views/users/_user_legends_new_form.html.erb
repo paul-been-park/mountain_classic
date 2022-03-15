@@ -1,42 +1,24 @@
-<!-- Form legend start -->
 <%= form_with(model: @legend, local: true) do |f| %>
-<!-- Form legend end -->
 
-  <!-- Label and input for name start -->
   <div class="form-group">
     <%= f.label :name %>
 
-    <!-- Input for name start -->
     <%= f.text_field :name, class: "form-control" %>
-    <!-- Input for name end -->
   </div>
-  <!-- Label and input for name end -->
 
-  <!-- Label and input for photo start -->
   <div class="form-group">
     <%= f.label :photo %>
 
-    <!-- Input for photo start -->
     <%= f.text_field :photo, class: "form-control" %>
-    <!-- Input for photo end -->
   </div>
-  <!-- Label and input for photo end -->
 
-  <!-- Label and input for bio start -->
   <div class="form-group">
     <%= f.label :bio %>
 
-    <!-- Input for bio start -->
     <%= f.text_field :bio, class: "form-control" %>
-    <!-- Input for bio end -->
   </div>
-  <!-- Label and input for bio end -->
 
-  <!-- Label and input for user_id start -->
-  <!-- Input for user_id start -->
   <%= f.hidden_field :user_id, value: @user.id %>
-  <!-- Input for user_id end -->
-  <!-- Label and input for user_id end -->
 
   <%= f.submit "Create legend", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

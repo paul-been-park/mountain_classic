@@ -10,24 +10,18 @@
   <ul class="list-group list-group-flush">
     <% @mountain.climbs.each do |climb| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <%= link_to climb, climb %>
-        <!-- Show link end -->
 
-        <!-- Delete link start -->
         <%= link_to climb, method: :delete, data: { confirm: "Do you really want to delete this climb" } do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
-        <!-- Delete link end -->
 
       </li>
     <% end %>
 
     <div class="card-footer">
       <div class="collapse" id="mountain_climbs_new_form">
-        <!-- New associationcollection form start -->
         <%= render partial: "mountains/mountain_climbs_new_form" %>
-        <!-- New associationcollection form end -->
       </div>
     </div>
 

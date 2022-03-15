@@ -6,28 +6,20 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Name</dt>
-      <!-- Display name start -->
       <dd><%= legend.name %></dd>
-      <!-- Display name end -->
 
       <dt>Photo</dt>
-      <!-- Display photo start -->
       <dd><%= legend.photo %></dd>
-      <!-- Display photo end -->
 
       <dt>Bio</dt>
-      <!-- Display bio start -->
       <dd><%= legend.bio %></dd>
-      <!-- Display bio end -->
 
       <dt>User</dt>
-      <!-- Display user_id start -->
       <dd>
         <% if @legend.user.present? %>
           <%= link_to legend.user, legend.user %>
         <% end %>
       </dd>
-      <!-- Display user_id end -->
 
     </dl>
 
@@ -36,21 +28,17 @@
         <%= link_to_show_or_back legend, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link legend start -->
       <div class="col">
         <%= link_to edit_legend_url(legend), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link legend end -->
 
-      <!-- Delete link legend start -->
       <div class="col">
         <%= link_to legend, method: :delete, data: { confirm: "Do you really want to delete this legend?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link legend end -->
     </div>
   </div>
 

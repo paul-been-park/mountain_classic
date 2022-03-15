@@ -1,7 +1,6 @@
 <% was_validated = climb.errors.any? %>
 
 <%= form_with(model: climb, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for route_name start -->
   <div class="form-group">
     <% route_name_class = "form-control" %>
     <% route_name_was_invalid = climb.errors.include?(:route_name) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :route_name %>
-    <!-- Input for route_name start -->
     <%= f.text_field :route_name, class: route_name_class, placeholder: "Enter route name" %>
-    <!-- Input for route_name end -->
     <% if route_name_was_invalid %>
       <% climb.errors.full_messages_for(:route_name).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for route_name end -->
-  <!-- Label and input for length start -->
   <div class="form-group">
     <% length_class = "form-control" %>
     <% length_was_invalid = climb.errors.include?(:length) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :length %>
-    <!-- Input for length start -->
     <%= f.text_field :length, class: length_class, placeholder: "Enter length" %>
-    <!-- Input for length end -->
     <% if length_was_invalid %>
       <% climb.errors.full_messages_for(:length).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,8 +45,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for length end -->
-  <!-- Label and input for grade start -->
   <div class="form-group">
     <% grade_class = "form-control" %>
     <% grade_was_invalid = climb.errors.include?(:grade) %>
@@ -67,9 +58,7 @@
     <% end %>
 
     <%= f.label :grade %>
-    <!-- Input for grade start -->
     <%= f.text_field :grade, class: grade_class, placeholder: "Enter grade" %>
-    <!-- Input for grade end -->
     <% if grade_was_invalid %>
       <% climb.errors.full_messages_for(:grade).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -78,8 +67,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for grade end -->
-  <!-- Label and input for guide_url start -->
   <div class="form-group">
     <% guide_url_class = "form-control" %>
     <% guide_url_was_invalid = climb.errors.include?(:guide_url) %>
@@ -93,9 +80,7 @@
     <% end %>
 
     <%= f.label :guide_url %>
-    <!-- Input for guide_url start -->
     <%= f.text_field :guide_url, class: guide_url_class, placeholder: "Enter guide url" %>
-    <!-- Input for guide_url end -->
     <% if guide_url_was_invalid %>
       <% climb.errors.full_messages_for(:guide_url).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -104,8 +89,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for guide_url end -->
-  <!-- Label and input for climb_photo start -->
   <div class="form-group">
     <% climb_photo_class = "form-control" %>
     <% climb_photo_was_invalid = climb.errors.include?(:climb_photo) %>
@@ -119,9 +102,7 @@
     <% end %>
 
     <%= f.label :climb_photo %>
-    <!-- Input for climb_photo start -->
     <%= f.text_field :climb_photo, class: climb_photo_class, placeholder: "Enter climb photo" %>
-    <!-- Input for climb_photo end -->
     <% if climb_photo_was_invalid %>
       <% climb.errors.full_messages_for(:climb_photo).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -130,8 +111,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for climb_photo end -->
-  <!-- Label and input for mountain_id start -->
   <div class="form-group">
     <% mountain_class = "form-control" %>
     <% mountain_was_invalid = climb.errors.include?(:mountain) %>
@@ -145,9 +124,7 @@
     <% end %>
 
     <%= f.label :mountain_id %>
-    <!-- Input for mountain_id start -->
     <%= f.collection_select :mountain_id, Mountain.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for mountain_id end -->
     <% if mountain_was_invalid %>
       <% climb.errors.full_messages_for(:mountain).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -156,8 +133,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for mountain_id end -->
-  <!-- Label and input for description start -->
   <div class="form-group">
     <% description_class = "form-control" %>
     <% description_was_invalid = climb.errors.include?(:description) %>
@@ -171,9 +146,7 @@
     <% end %>
 
     <%= f.label :description %>
-    <!-- Input for description start -->
     <%= f.text_field :description, class: description_class, placeholder: "Enter description" %>
-    <!-- Input for description end -->
     <% if description_was_invalid %>
       <% climb.errors.full_messages_for(:description).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -182,8 +155,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for description end -->
-  <!-- Label and input for classic start -->
   <div class="form-group">
     <% classic_class = "form-control" %>
     <% classic_was_invalid = climb.errors.include?(:classic) %>
@@ -197,9 +168,7 @@
     <% end %>
 
     <%= f.label :classic %>
-    <!-- Input for classic start -->
     <%= f.text_field :classic, class: classic_class, placeholder: "Enter classic" %>
-    <!-- Input for classic end -->
     <% if classic_was_invalid %>
       <% climb.errors.full_messages_for(:classic).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -208,6 +177,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for classic end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

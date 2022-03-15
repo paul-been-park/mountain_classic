@@ -6,32 +6,24 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Tick</dt>
-      <!-- Display tick start -->
       <dd><%= interaction.tick %></dd>
-      <!-- Display tick end -->
 
       <dt>Summited</dt>
-      <!-- Display summited start -->
       <dd><%= interaction.summited %></dd>
-      <!-- Display summited end -->
 
       <dt>User</dt>
-      <!-- Display user_id start -->
       <dd>
         <% if @interaction.user.present? %>
           <%= link_to interaction.user, interaction.user %>
         <% end %>
       </dd>
-      <!-- Display user_id end -->
 
       <dt>Climb</dt>
-      <!-- Display climb_id start -->
       <dd>
         <% if @interaction.climb.present? %>
           <%= link_to interaction.climb, interaction.climb %>
         <% end %>
       </dd>
-      <!-- Display climb_id end -->
 
     </dl>
 
@@ -40,21 +32,17 @@
         <%= link_to_show_or_back interaction, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link interaction start -->
       <div class="col">
         <%= link_to edit_interaction_url(interaction), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link interaction end -->
 
-      <!-- Delete link interaction start -->
       <div class="col">
         <%= link_to interaction, method: :delete, data: { confirm: "Do you really want to delete this interaction?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link interaction end -->
     </div>
   </div>
 

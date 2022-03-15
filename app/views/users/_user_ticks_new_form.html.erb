@@ -1,42 +1,24 @@
-<!-- Form interaction start -->
 <%= form_with(model: @interaction, local: true) do |f| %>
-<!-- Form interaction end -->
 
-  <!-- Label and input for tick start -->
   <div class="form-group">
     <%= f.label :tick %>
 
-    <!-- Input for tick start -->
     <%= f.text_field :tick, class: "form-control" %>
-    <!-- Input for tick end -->
   </div>
-  <!-- Label and input for tick end -->
 
-  <!-- Label and input for summited start -->
   <div class="form-group">
     <%= f.label :summited %>
 
-    <!-- Input for summited start -->
     <%= f.text_field :summited, class: "form-control" %>
-    <!-- Input for summited end -->
   </div>
-  <!-- Label and input for summited end -->
 
-  <!-- Label and input for user_id start -->
-  <!-- Input for user_id start -->
   <%= f.hidden_field :user_id, value: @user.id %>
-  <!-- Input for user_id end -->
-  <!-- Label and input for user_id end -->
 
-  <!-- Label and input for climb_id start -->
   <div class="form-group">
     <%= f.label :climb_id %>
 
-    <!-- Input for climb_id start -->
     <%= f.collection_select :climb_id, Climb.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for climb_id end -->
   </div>
-  <!-- Label and input for climb_id end -->
 
   <%= f.submit "Create interaction", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

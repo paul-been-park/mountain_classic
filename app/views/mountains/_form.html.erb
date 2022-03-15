@@ -1,7 +1,6 @@
 <% was_validated = mountain.errors.any? %>
 
 <%= form_with(model: mountain, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for region_id start -->
   <div class="form-group">
     <% region_class = "form-control" %>
     <% region_was_invalid = mountain.errors.include?(:region) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :region_id %>
-    <!-- Input for region_id start -->
     <%= f.collection_select :region_id, Region.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for region_id end -->
     <% if region_was_invalid %>
       <% mountain.errors.full_messages_for(:region).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for region_id end -->
-  <!-- Label and input for mountain_name start -->
   <div class="form-group">
     <% mountain_name_class = "form-control" %>
     <% mountain_name_was_invalid = mountain.errors.include?(:mountain_name) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :mountain_name %>
-    <!-- Input for mountain_name start -->
     <%= f.text_field :mountain_name, class: mountain_name_class, placeholder: "Enter mountain name" %>
-    <!-- Input for mountain_name end -->
     <% if mountain_name_was_invalid %>
       <% mountain.errors.full_messages_for(:mountain_name).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,6 +45,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for mountain_name end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

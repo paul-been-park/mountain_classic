@@ -1,7 +1,6 @@
 <% was_validated = interaction.errors.any? %>
 
 <%= form_with(model: interaction, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for tick start -->
   <div class="form-group">
     <% tick_class = "form-control" %>
     <% tick_was_invalid = interaction.errors.include?(:tick) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :tick %>
-    <!-- Input for tick start -->
     <%= f.text_field :tick, class: tick_class, placeholder: "Enter tick" %>
-    <!-- Input for tick end -->
     <% if tick_was_invalid %>
       <% interaction.errors.full_messages_for(:tick).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for tick end -->
-  <!-- Label and input for summited start -->
   <div class="form-group">
     <% summited_class = "form-control" %>
     <% summited_was_invalid = interaction.errors.include?(:summited) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :summited %>
-    <!-- Input for summited start -->
     <%= f.text_field :summited, class: summited_class, placeholder: "Enter summited" %>
-    <!-- Input for summited end -->
     <% if summited_was_invalid %>
       <% interaction.errors.full_messages_for(:summited).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,8 +45,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for summited end -->
-  <!-- Label and input for user_id start -->
   <div class="form-group">
     <% user_class = "form-control" %>
     <% user_was_invalid = interaction.errors.include?(:user) %>
@@ -67,9 +58,7 @@
     <% end %>
 
     <%= f.label :user_id %>
-    <!-- Input for user_id start -->
     <%= f.collection_select :user_id, User.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for user_id end -->
     <% if user_was_invalid %>
       <% interaction.errors.full_messages_for(:user).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -78,8 +67,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for user_id end -->
-  <!-- Label and input for climb_id start -->
   <div class="form-group">
     <% climb_class = "form-control" %>
     <% climb_was_invalid = interaction.errors.include?(:climb) %>
@@ -93,9 +80,7 @@
     <% end %>
 
     <%= f.label :climb_id %>
-    <!-- Input for climb_id start -->
     <%= f.collection_select :climb_id, Climb.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for climb_id end -->
     <% if climb_was_invalid %>
       <% interaction.errors.full_messages_for(:climb).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -104,6 +89,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for climb_id end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

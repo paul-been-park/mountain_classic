@@ -6,18 +6,14 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Region</dt>
-      <!-- Display region_id start -->
       <dd>
         <% if @mountain.region.present? %>
           <%= link_to mountain.region, mountain.region %>
         <% end %>
       </dd>
-      <!-- Display region_id end -->
 
       <dt>Mountain name</dt>
-      <!-- Display mountain_name start -->
       <dd><%= mountain.mountain_name %></dd>
-      <!-- Display mountain_name end -->
 
     </dl>
 
@@ -26,21 +22,17 @@
         <%= link_to_show_or_back mountain, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link mountain start -->
       <div class="col">
         <%= link_to edit_mountain_url(mountain), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link mountain end -->
 
-      <!-- Delete link mountain start -->
       <div class="col">
         <%= link_to mountain, method: :delete, data: { confirm: "Do you really want to delete this mountain?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link mountain end -->
     </div>
   </div>
 

@@ -6,22 +6,18 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Legend</dt>
-      <!-- Display legend_id start -->
       <dd>
         <% if @first_ascent.legend.present? %>
           <%= link_to first_ascent.legend, first_ascent.legend %>
         <% end %>
       </dd>
-      <!-- Display legend_id end -->
 
       <dt>Climb</dt>
-      <!-- Display climb_id start -->
       <dd>
         <% if @first_ascent.climb.present? %>
           <%= link_to first_ascent.climb, first_ascent.climb %>
         <% end %>
       </dd>
-      <!-- Display climb_id end -->
 
     </dl>
 
@@ -30,21 +26,17 @@
         <%= link_to_show_or_back first_ascent, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link first_ascent start -->
       <div class="col">
         <%= link_to edit_first_ascent_url(first_ascent), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link first_ascent end -->
 
-      <!-- Delete link first_ascent start -->
       <div class="col">
         <%= link_to first_ascent, method: :delete, data: { confirm: "Do you really want to delete this first_ascent?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link first_ascent end -->
     </div>
   </div>
 
