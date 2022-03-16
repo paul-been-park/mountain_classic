@@ -23,7 +23,10 @@ class Climb < ApplicationRecord
 
   # Direct associations
 
-  has_many   :interactions,
+  has_many   :to_dos,
+             dependent: :destroy
+
+  has_many   :summits,
              dependent: :destroy
 
   has_many   :comments,
@@ -36,13 +39,17 @@ class Climb < ApplicationRecord
 
   # Indirect associations
 
-  has_many   :users_interactions,
+  has_many   :lists,
              through: :comments,
              source: :user
 
-  has_many   :legends,
-             through: :first_ascents,
-             source: :legend
+  has_many   :users,
+             through: :summits,
+             source: :user
+
+  has_many   :users_that_want_todo,
+             through: :to_dos,
+             source: :user
 
   # Validations
 

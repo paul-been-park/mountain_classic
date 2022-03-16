@@ -8,7 +8,6 @@ RSpec.describe Legend, type: :model do
   end
 
   describe "InDirect Associations" do
-    it { should have_many(:climbs) }
   end
 
   describe "Validations" do

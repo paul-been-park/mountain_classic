@@ -11,10 +11,6 @@ class Legend < ApplicationRecord
 
   # Indirect associations
 
-  has_many   :climbs,
-             through: :first_ascents,
-             source: :climb
-
   # Validations
 
   # Scopes

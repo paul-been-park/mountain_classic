@@ -1,0 +1,12 @@
+<%= form_with(model: @to_do, local: true) do |f| %>
+
+  <div class="form-group">
+    <%= f.label :user_id %>
+
+    <%= f.collection_select :user_id, User.all, :id, :to_s, {}, class: "form-control" %>
+  </div>
+
+  <%= f.hidden_field :climb_id, value: @climb.id %>
+
+  <%= f.submit "Create to do", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

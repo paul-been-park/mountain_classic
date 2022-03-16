@@ -14,7 +14,9 @@ class ClimbResource < ApplicationResource
 
   # Direct associations
 
-  has_many   :interactions
+  has_many   :to_dos
+
+  has_many   :summits
 
   has_many   :comments
 
@@ -24,8 +26,11 @@ class ClimbResource < ApplicationResource
 
   # Indirect associations
 
-  many_to_many :users_interactions,
+  many_to_many :lists,
                resource: UserResource
 
-  many_to_many :legends
+  many_to_many :users
+
+  many_to_many :users_that_want_todo,
+               resource: UserResource
 end

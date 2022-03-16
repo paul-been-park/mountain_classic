@@ -14,6 +14,4 @@ class LegendResource < ApplicationResource
   belongs_to :user
 
   # Indirect associations
-
-  many_to_many :climbs
 end

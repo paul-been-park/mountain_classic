@@ -2,6 +2,12 @@ class User < ApplicationRecord
   include JwtToken
   # Direct associations
 
+  has_many   :to_dos,
+             dependent: :destroy
+
+  has_many   :summits,
+             dependent: :destroy
+
   has_many   :legends,
              dependent: :destroy
 
@@ -15,18 +21,22 @@ class User < ApplicationRecord
              foreign_key: "sender_id",
              dependent: :destroy
 
-  has_many   :ticks,
-             class_name: "Interaction",
-             dependent: :destroy
-
   has_many   :interactions,
              class_name: "Comment",
              dependent: :destroy
 
   # Indirect associations
 
-  has_many   :climb_interactions,
+  has_many   :todos,
              through: :interactions,
+             source: :climb
+
+  has_many   :climbs,
+             through: :summits,
+             source: :climb
+
+  has_many   :climbs_todo,
+             through: :to_dos,
              source: :climb
 
   # Validations

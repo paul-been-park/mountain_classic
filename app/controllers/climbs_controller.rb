@@ -4,7 +4,7 @@ class ClimbsController < ApplicationController
   def index
     @q = Climb.ransack(params[:q])
     @climbs = @q.result(distinct: true).includes(:mountain, :first_ascents,
-                                                 :comments, :interactions, :legends, :users_interactions).page(params[:page]).per(10)
+                                                 :comments, :summits, :to_dos, :users_that_want_todo, :users, :lists).page(params[:page]).per(10)
     @location_hash = Gmaps4rails.build_markers(@climbs.where.not(location_latitude: nil)) do |climb, marker|
       marker.lat climb.location_latitude
       marker.lng climb.location_longitude
@@ -12,7 +12,8 @@ class ClimbsController < ApplicationController
   end
 
   def show
-    @interaction = Interaction.new
+    @to_do = ToDo.new
+    @summit = Summit.new
     @comment = Comment.new
     @first_ascent = FirstAscent.new
   end

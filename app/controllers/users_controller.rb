@@ -6,9 +6,10 @@ class UsersController < ApplicationController
   end
 
   def show
+    @to_do = ToDo.new
+    @summit = Summit.new
     @legend = Legend.new
     @message = Message.new
-    @interaction = Interaction.new
     @comment = Comment.new
   end
 
