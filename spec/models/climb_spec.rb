@@ -2,7 +2,9 @@ require "rails_helper"
 
 RSpec.describe Climb, type: :model do
   describe "Direct Associations" do
-    it { should have_many(:interactions) }
+    it { should have_many(:to_dos) }
+
+    it { should have_many(:summits) }
 
     it { should have_many(:comments) }
 
@@ -12,9 +14,11 @@ RSpec.describe Climb, type: :model do
   end
 
   describe "InDirect Associations" do
-    it { should have_many(:users_interactions) }
+    it { should have_many(:lists) }
 
-    it { should have_many(:legends) }
+    it { should have_many(:users) }
+
+    it { should have_many(:users_that_want_todo) }
   end
 
   describe "Validations" do

@@ -8,6 +8,10 @@ class UserResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :to_dos
+
+  has_many   :summits
+
   has_many   :legends
 
   has_many   :received,
@@ -18,14 +22,16 @@ class UserResource < ApplicationResource
              resource: MessageResource,
              foreign_key: :sender_id
 
-  has_many   :ticks,
-             resource: InteractionResource
-
   has_many   :interactions,
              resource: CommentResource
 
   # Indirect associations
 
-  many_to_many :climb_interactions,
+  many_to_many :todos,
+               resource: ClimbResource
+
+  many_to_many :climbs
+
+  many_to_many :climbs_todo,
                resource: ClimbResource
 end

@@ -113,18 +113,58 @@
   </script>
 
   <div class="form-group">
-    <%= f.label :interactions_tick_cont, "Interactions tick contains" %>
-    <%= f.text_field :interactions_tick_cont, :class => "form-control", :placeholder => "Interactions tick contains" %>
+    <%= f.label :created_at, "ToDo Created at" %>
+    <div class="row">
+      <div class='col-md-6 mb-1'>
+        <div class='input-group date' id='to_dosgteqcreated_atPicker' data-target-input="nearest">
+          <%= f.text_field :to_dos_created_at_gteq, :class => "form-control datetimepicker-input", :placeholder => "ToDo Created at greater than or equal to", :data => {:target => '#to_dosgteqcreated_atPicker'} %>
+          <div class="input-group-append" data-target='#to_dosgteqcreated_atPicker' data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class='col-md-6'>
+        <div class='input-group date' id='to_doslteqcreated_atPicker' data-target-input="nearest">
+          <%= f.text_field :to_dos_created_at_lteq, :class => "form-control datetimepicker-input", :placeholder => "ToDo Created at less than or equal to", :data => {:target => '#to_doslteqcreated_atPicker'} %>
+          <div class="input-group-append" data-target='#to_doslteqcreated_atPicker' data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+      $(function () {
+          $('#to_dosgteqcreated_atPicker').datetimepicker({
+              format: 'YYYY-MM-DD hh:mm:SS'
+          });
+          $('#to_doslteqcreated_atPicker').datetimepicker({
+              useCurrent: false,
+              format: 'YYYY-MM-DD hh:mm:SS'
+          });
+          $('#to_dosgteqcreated_atPicker').on("dp.change", function (e) {
+              $('#to_doslteqcreated_atPicker').data("DateTimePicker").minDate(e.date);
+          });
+          $('#to_doslteqcreated_atPicker').on("dp.change", function (e) {
+              $('#to_dosgteqcreated_atPicker').data("DateTimePicker").maxDate(e.date);
+          });
+      });
+  </script>
+
+  <div class="form-group">
+    <%= f.label :users_that_want_todo_email_cont, "Users that want todo email contains" %>
+    <%= f.text_field :users_that_want_todo_email_cont, :class => "form-control", :placeholder => "Users that want todo email contains" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :legends_name_cont, "Legends name contains" %>
-    <%= f.text_field :legends_name_cont, :class => "form-control", :placeholder => "Legends name contains" %>
+    <%= f.label :users_email_cont, "Users email contains" %>
+    <%= f.text_field :users_email_cont, :class => "form-control", :placeholder => "Users email contains" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :users_interactions_email_cont, "Users interactions email contains" %>
-    <%= f.text_field :users_interactions_email_cont, :class => "form-control", :placeholder => "Users interactions email contains" %>
+    <%= f.label :lists_email_cont, "Lists email contains" %>
+    <%= f.text_field :lists_email_cont, :class => "form-control", :placeholder => "Lists email contains" %>
   </div>
 
 

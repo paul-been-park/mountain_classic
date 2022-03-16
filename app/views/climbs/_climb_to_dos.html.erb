@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    To Dos
+
+    <a data-toggle="collapse" href="#climb_to_dos_new_form">
+      Add to do
+    </a>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @climb.to_dos.each do |to_do| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <%= link_to to_do, to_do %>
+
+        <%= link_to to_do, method: :delete, data: { confirm: "Do you really want to delete this to_do" } do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+
+      </li>
+    <% end %>
+
+    <div class="card-footer">
+      <div class="collapse" id="climb_to_dos_new_form">
+        <%= render partial: "climbs/climb_to_dos_new_form" %>
+      </div>
+    </div>
+
+  </ul>
+</div>
